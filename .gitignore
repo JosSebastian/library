@@ -1,0 +1,19 @@
+# dependencies
+node_modules
+
+# cache
+.branches
+.temp
+.nx
+.nuxt
+
+# output
+.output
+dist
+target
+
+# editor
+.vscode
+
+# environment
+.env
