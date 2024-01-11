@@ -95,6 +95,10 @@
 </template>
 
 <script setup lang="ts">
+definePageMeta({
+  layout: "authentication"
+});
+
 const router = useRouter();
 
 const userStore = useUserStore();
