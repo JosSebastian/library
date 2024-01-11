@@ -96,7 +96,8 @@
 
 <script setup lang="ts">
 definePageMeta({
-  layout: "authentication"
+  layout: "authentication",
+  middleware: ["authentication"]
 });
 
 const router = useRouter();
@@ -143,17 +144,23 @@ const handleCancel = () => {
     path: "/"
   });
 };
-const handleConfirm = () => {
+const handleConfirm = async () => {
+  let user = userStore.user;
   switch (sign.value) {
     case "up":
-      userStore.signUp();
+      user = await userStore.signUp();
       break;
     case "in":
-      userStore.signIn();
+      user = await userStore.signIn();
       break;
     case "out":
-      userStore.signOut();
+      user = await userStore.signOut();
       break;
+  }
+  if (user) {
+    router.push({
+      path: "/"
+    });
   }
 };
 </script>
